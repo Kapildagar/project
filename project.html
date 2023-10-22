@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- Website - www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Copy Code To Clipboard | CodingLab</title>
+    <link rel="stylesheet" href="project.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/4d244aa20b.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="text-boxes">
+      <div class="text-box HTMLBox">
+        <div class="heading">
+        <div class="topic">HTML Code:</div>
+        <div>
+        <i id="lockicon" class="fa-solid fa-lock "></i>
+        <i id="unlockicon" class="fa-solid fa-lock-open "></i>
+       </div>
+      </div>
+        
+        <textarea id="HTMLBox" onkeyup="runnig()">
+      <!--  Add HTML Code Here -->
+      </textarea
+        >
+        <button id="HTMLButton">Copy Codes</button>
+        <button id="Lock" >Lock</button>
+        <button id="unLock" >Unlock</button>
+      </div>
+      <div class="text-box CSSBox">
+        <div class="heading">
+          <div class="topic" >CSS Code:</div>
+          <div>
+          <i id="csslockicon" class="fa-solid fa-lock "></i>
+          <i id="cssunlockicon" class="fa-solid fa-lock-open "></i>
+         </div>
+        </div>
+        <textarea id="CSSBox" onkeyup="runnig()" >
+          /* Add CSS codes Here */
+      </textarea
+        >
+        <button id="CSSButton">Copy Codes</button>
+        <button id="cssLock" >Lock</button>
+        <button id="cssunLock" >Unlock</button>
+      </div>
+      <div class="text-box JSBox">
+        <div class="heading">
+          <div class="topic">JS Code:</div>
+          <div>
+          <i id="jslockicon" class="fa-solid fa-lock "></i>
+          <i id="jsunlockicon" class="fa-solid fa-lock-open "></i>
+         </div>
+        </div>
+        <textarea id="JSBox" onkeyup="runnig()">
+        // Add JavaScript Code here
+      </textarea
+        >
+        <button id="JSButton">Copy Codes</button>
+        <button id="jsLock" >Lock</button>
+        <button id="jsunLock" >Unlock</button>
+      </div>
+
+      <div class="text-box JSBox" >
+        <div class="topic">OUTPUT:</div>
+        <iframe id="OUTPUT"  class="output">
+        </iframe>
+        
+      </div>
+    </div>
+
+    <script>
+      // HTML BOx JS Code
+      let HTMLBox = document.getElementById("HTMLBox");
+      let HTMLButton = document.getElementById("HTMLButton");
+
+      HTMLButton.onclick = function () {
+        HTMLBox.select();
+        document.execCommand("copy");
+        HTMLButton.innerText = "Codes Copied";
+      };
+
+      // CSS Box Js Code
+      let CSSBox = document.getElementById("CSSBox");
+      let CSSButton = document.getElementById("CSSButton");
+
+      CSSButton.onclick = function () {
+        CSSBox.select();
+        document.execCommand("copy");
+        CSSButton.innerText = "Codes Copied";
+      };
+      // JavaScript BOx JS Code
+      let JSBox = document.getElementById("JSBox");
+      let JSButton = document.getElementById("JSButton");
+
+      JSButton.onclick = function () {
+        JSBox.select();
+        document.execCommand("copy");
+        JSButton.innerText = "Codes Copied";
+      };
+
+      
+
+      // let HtmlSave=document.getElementById("HTMLSave");
+      function runnig(){
+        let HTMLBox = document.getElementById("HTMLBox");
+        let CSSBox = document.getElementById("CSSBox");
+        let JSBox = document.getElementById("JSBox");
+        let Output=document.getElementById("OUTPUT");
+        
+        Output.contentDocument.body.innerHTML=HTMLBox.value+"<style>"+CSSBox.value+"</style";
+        Output.contentWindow.eval(JSBox.value);
+        //   Output.contentDocument.body.innerHTML=HTMLBox.value;
+          console.log("working");
+          // HtmlSave.innerHTML="Saved";
+       }
+       let lock=document.getElementById("Lock");
+       lock.onclick=function(){
+          HTMLBox.setAttribute("readonly",true);
+          console.log("working")
+          document.getElementById("unlockicon").style.display="none";
+          document.getElementById("lockicon").style.display="block";
+       }
+       let unlock=document.getElementById("unLock");
+       unlock.onclick=function(){
+          HTMLBox.removeAttribute("readonly",true);
+          console.log("working")
+          document.getElementById("unlockicon").style.display="block";
+          document.getElementById("lockicon").style.display="none";
+       }
+
+      
+       let csslock=document.getElementById("cssLock");
+       csslock.onclick=function(){
+          CSSBox.setAttribute("readonly",true);
+          console.log("working")
+          document.getElementById("cssunlockicon").style.display="none";
+          document.getElementById("csslockicon").style.display="block";
+       }
+       let cssunlock=document.getElementById("cssunLock");
+       cssunlock.onclick=function(){
+          CSSBox.removeAttribute("readonly",true);
+          console.log("working")
+          document.getElementById("cssunlockicon").style.display="block";
+          document.getElementById("csslockicon").style.display="none";
+       }
+
+
+
+       let jslock=document.getElementById("jsLock");
+       jslock.onclick=function(){
+          JSBox.setAttribute("readonly",true);
+          console.log("working")
+          document.getElementById("jsunlockicon").style.display="none";
+          document.getElementById("jslockicon").style.display="block";
+       }
+       let jsunlock=document.getElementById("jsunLock");
+       jsunlock.onclick=function(){
+          JSBox.removeAttribute("readonly",true);
+          console.log("working")
+          document.getElementById("jsunlockicon").style.display="block";
+          document.getElementById("jslockicon").style.display="none";
+       }
+    </script>
+  </body>
+</html>
